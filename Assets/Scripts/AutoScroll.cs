@@ -37,7 +37,7 @@ public class AutoScroll : MonoBehaviour
 
     void Update()
     {
-        scrollPosition.x -= Time.deltaTime * speed;
+        scrollPosition.x -= Time.deltaTime * speed * GameManager.Instance.speedIncreasement;
         transform.position = scrollPosition;
     }
 
