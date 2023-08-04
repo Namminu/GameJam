@@ -10,28 +10,39 @@ public class PlayerObstacle : MonoBehaviour
     private bool isHit = false;
 	private float hp;
 
+	private SpriteRenderer spriteRenderer;
+	public float blinkInterval = 0.05f;
+	public int blinkCount = 5;
+	private bool isBlinking = false;
 
-    // Start is called before the first frame update
-    void Start()
+	float timer = 0f;
+
+	// Start is called before the first frame update
+	void Start()
     {
         obstacle = GetComponent<Obstacle>();
         autoscroll = GetComponent<AutoScroll>();
-    }
 
+		spriteRenderer = GetComponent<SpriteRenderer>();
 
-    private void OnTriggerEnter2D(Collider2D collision)
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
     {
-        float timer = 0f;
+
         float obstacleSlow = 1f;
-		float currentAutoScrollSpeed;
+		//float currentAutoScrollSpeed;
 
         if(collision.tag == "Obstacle")
         {
-            Debug.Log("장애물이다");
-            if (isHit) return;
 
-            timer += Time.deltaTime;
+            if (isHit) return;
+			Debug.Log("장애물이다");
+			//timer = 0f;
+
             isHit = true;
+			StartBlink();
+
 			//currentAutoScrollSpeed = autoscroll.speed;
 			//autoscroll.speed -= 0.1f;  //오토스크롤 속도 줄이기
 			//hp -= obstacle.ob_Damage;  //체력 감소
@@ -62,15 +73,40 @@ public class PlayerObstacle : MonoBehaviour
 				//             if (timer == 0) return;
 				//}
 			}
+
+			//if (timer >= obstacleSlow)
+			//{
+			//	Debug.Log("스크롤 속도 원상복귀");
+			//	//autoscroll.speed = currentAutoScrollSpeed;
+			//	isHit = false;
+			//}
 		}
 
-		if (timer >= obstacleSlow)
-		{
-			Debug.Log("스크롤 속도 원상복귀");
-			//autoscroll.speed = currentAutoScrollSpeed;
-			isHit = false;
-		}
+		
 	}
 
+	void StartBlink()
+	{
+		if(!isBlinking)
+		{
+			StartCoroutine(Blink());
+		}
+	}
+	IEnumerator Blink()
+	{
+		isBlinking = true; 
+		int blinkTimes = 0;
 
+		while (blinkTimes < blinkCount)
+		{
+			spriteRenderer.enabled = false; 
+			yield return new WaitForSeconds(blinkInterval); 
+			spriteRenderer.enabled = true;
+			yield return new WaitForSeconds(blinkInterval); 
+			blinkTimes++; 
+		}
+		isBlinking = false;
+
+		isHit = false;
+	}
 }
