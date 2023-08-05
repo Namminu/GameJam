@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Food
+  - BoatTrigger
   layers:
   - Default
   - TransparentFX
