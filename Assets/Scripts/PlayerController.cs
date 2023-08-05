@@ -7,12 +7,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-
+    private PlayerObstacle playerObstacle;
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
-    }
+        playerObstacle = GetComponent<PlayerObstacle>();
+	}
 
 
     private void Update()
