@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 0.5f)
+        if (timer > 1f)
         {
             speedIncreasement += Time.deltaTime * speedScale;
             timer = 0f;

@@ -19,6 +19,7 @@ public class PlayerObstacle : MonoBehaviour
 	public int blinkCount = 5;
 
 	public float obstacleSlowRatio;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -37,6 +38,7 @@ public class PlayerObstacle : MonoBehaviour
 			isHit = true;
 			GotHit();
 			playerHp.GotDamage(10);
+			playerHp.GotHit();
 		}
         else if (collision.CompareTag("Food"))
         {

@@ -65,7 +65,7 @@ public class PatternManager : MonoBehaviour
     private IEnumerator Boat()
     {
         
-        Instantiate(boat, new Vector3(13f, 2.4f, 0), Quaternion.identity);
+        Instantiate(boat, new Vector3(13f, 2.14f, 0), Quaternion.identity);
         yield return new WaitForSeconds(10f);
         isActing = false;
     }
