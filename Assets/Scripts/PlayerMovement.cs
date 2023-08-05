@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float horizontalSpeed;
-    
+
+    [SerializeField] private GameObject waterFlip;
     
     [Header("Jump Property")]
     [SerializeField] private float waterHeight;
@@ -43,9 +44,10 @@ public class PlayerMovement : MonoBehaviour
         if (isJumping) return;
 
         Vector2 nomal = new Vector2(h, v).normalized;
+        float speedScale = Mathf.Min(1 + (GameManager.Instance.GetIncreasementSpeed() - 1) * 0.6f, 1.22f);
         
-        float playerPosX = Mathf.Clamp(transform.position.x + nomal.x * horizontalSpeed * Time.deltaTime, minPosX, maxPosX);
-        float playerPosY = Mathf.Clamp(transform.position.y + nomal.y * verticalSpeed * Time.deltaTime, minPosY, waterHeight);
+        float playerPosX = Mathf.Clamp(transform.position.x + nomal.x * horizontalSpeed * speedScale * Time.deltaTime, minPosX, maxPosX);
+        float playerPosY = Mathf.Clamp(transform.position.y + nomal.y * verticalSpeed * speedScale * Time.deltaTime, minPosY, waterHeight);
         
         if(playerPosY >= waterHeight && v > 0)
         {
@@ -72,11 +74,11 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Jump()
     {
 
-        float upDownTime = 0.5f;
+        float upDownTime = 0.34f;
         float timer = 0;
         
         float offset = maxJumpHeight - waterHeight;
-
+        Instantiate(waterFlip, transform.position, Quaternion.identity);
         while (timer < upDownTime)
         {
             timer += Time.deltaTime;
@@ -98,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         transform.position = new Vector3(transform.position.x, waterHeight);
+        Instantiate(waterFlip, transform.position, Quaternion.identity);
         isJumping = false;
     }
 }

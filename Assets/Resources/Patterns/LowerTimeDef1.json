@@ -1,0 +1,39 @@
+{
+  "pattern": [
+    {
+      "lineA": "a",
+      "lineB": "b",
+      "lineC": "b",
+      "lineD": null,
+      "lineE": "a"
+    },
+    {
+      "lineA": null,
+      "lineB": null,
+      "lineC": null,
+      "lineD": null,
+      "lineE": null
+    },
+    {
+      "lineA": null,
+      "lineB": null,
+      "lineC": null,
+      "lineD": null,
+      "lineE": null
+    },
+    {
+      "lineA": null,
+      "lineB": null,
+      "lineC": null,
+      "lineD": null,
+      "lineE": null
+    },
+    {
+      "lineA": "a",
+      "lineB": "b",
+      "lineC": null,
+      "lineD": "b",
+      "lineE": "a"
+    }
+  ]
+}

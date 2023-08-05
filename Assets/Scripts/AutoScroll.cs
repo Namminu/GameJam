@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -19,5 +20,10 @@ public class AutoScroll : MonoBehaviour
         scrollPosition.y = transform.position.y;
         scrollPosition.x -= Time.deltaTime * speed * GameManager.Instance.GetIncreasementSpeed();
         transform.position = scrollPosition;
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

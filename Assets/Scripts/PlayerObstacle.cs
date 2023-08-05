@@ -31,13 +31,23 @@ public class PlayerObstacle : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Obstacle")
+        if(collision.CompareTag("Obstacle"))
         {
             if (isHit) return;
 			isHit = true;
 			GotHit();
 			playerHp.GotDamage(10);
 		}
+        else if (collision.CompareTag("Food"))
+        {
+	        collision.GetComponent<IItem>().Use();
+	        Eat();
+        }
+	}
+
+	private void Eat()
+	{
+		
 	}
 
 	private void GotHit()
@@ -53,9 +63,13 @@ public class PlayerObstacle : MonoBehaviour
 
 		while (blinkTimes < blinkCount)
 		{
-			spriteRenderer.enabled = false; 
-			yield return new WaitForSeconds(blinkInterval); 
-			spriteRenderer.enabled = true;
+			Color color = spriteRenderer.color;
+			color.a = 0.1f;
+			spriteRenderer.color = color;
+			yield return new WaitForSeconds(blinkInterval);
+			color = spriteRenderer.color;
+			color.a = 1;
+			spriteRenderer.color = color;
 			yield return new WaitForSeconds(blinkInterval); 
 			blinkTimes++; 
 		}
