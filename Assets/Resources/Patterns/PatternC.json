@@ -1,0 +1,32 @@
+{
+  "pattern": [
+    {
+      "lineA": "x",
+      "lineB": "a",
+      "lineC": "x",
+      "lineD": "b",
+      "lineE": "x"
+    },
+    {
+      "lineA": "x",
+      "lineB": "x",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "x"
+    },
+    {
+      "lineA": "x",
+      "lineB": "x",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "x"
+    },
+    {
+      "lineA": "a",
+      "lineB": "x",
+      "lineC": "b",
+      "lineD": "x",
+      "lineE": "a"
+    }
+  ]
+}

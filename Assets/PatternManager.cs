@@ -11,14 +11,20 @@ public class PatternManager : MonoBehaviour
     [SerializeField]
     private TextAsset[] datas;
     private Alldata[] patterns;
+    
     private Vector2[] spawnPos = new Vector2[5];
     
     [SerializeField] private GameObject[] prefabs;
 
-
+    [SerializeField] private float spawnDelay;
     [SerializeField] private float patternDelay;
 
     private int currentIndex;
+
+    private int patternType;
+    
+    private float spaceY;
+    private Vector2 offset;
 
     private void Awake()
     {
@@ -27,8 +33,9 @@ public class PatternManager : MonoBehaviour
 
         Debug.Log(patterns[0].pattern);
         BoxCollider2D col = GetComponent<BoxCollider2D>();
-        float spaceY = col.size.y / 5;
-        Vector2 offset = new Vector2(transform.position.x, transform.position.y - col.size.y / 2);
+        spaceY = col.size.y / 5;
+        offset = new Vector2(transform.position.x, transform.position.y - col.size.y / 2);
+        
         for (int i = 0; i < 5; i++)
         {
             spawnPos[i] = offset + Vector2.up * spaceY * (i + 1);
@@ -43,7 +50,7 @@ public class PatternManager : MonoBehaviour
     IEnumerator Spawn()
     {
         currentIndex = Random.Range(0, patterns.Length);
-        WaitForSeconds spawnDelay = new WaitForSeconds(1);
+        WaitForSeconds spawnDelayWaitForSeconds = new WaitForSeconds(spawnDelay);
         foreach (var line in patterns[currentIndex].pattern)
         {
             SpawnLine(line.lineA, 0);
@@ -51,7 +58,7 @@ public class PatternManager : MonoBehaviour
             SpawnLine(line.lineC, 2);
             SpawnLine(line.lineD, 3);
             SpawnLine(line.lineE, 4);
-            yield return spawnDelay;
+            yield return spawnDelayWaitForSeconds;
         }
         yield return new WaitForSeconds(patternDelay);
         StartCoroutine(Spawn());
@@ -65,6 +72,9 @@ public class PatternManager : MonoBehaviour
         {
             case "a":
                 go = prefabs[0];
+                break;
+            case "b":
+                go = prefabs[1];
                 break;
             default:
                 return;
