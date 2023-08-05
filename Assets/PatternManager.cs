@@ -17,7 +17,9 @@ public class PatternManager : MonoBehaviour
     [SerializeField] private GameObject[] prefabs;
 
     [SerializeField] private float spawnDelay;
-    [SerializeField] private float patternDelay;
+    [SerializeField] private float minPatternDelay;
+    [SerializeField] private float maxPatternDelay;
+    private float PatternDelay => Random.Range(minPatternDelay, maxPatternDelay);
 
     private int currentIndex;
     private int patternType;
@@ -57,7 +59,10 @@ public class PatternManager : MonoBehaviour
             SpawnLine(line.lineE, 4);
             yield return spawnDelayWaitForSeconds;
         }
-        yield return new WaitForSeconds(patternDelay);
+        Spawner.Instance.ReStartWaterSpawn();
+        yield return new WaitForSeconds(PatternDelay);
+        Spawner.Instance.WaterSpawnStop();
+        yield return new WaitForSeconds(1);
         StartCoroutine(Spawn());
     }
 
