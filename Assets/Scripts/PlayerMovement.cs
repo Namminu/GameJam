@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         float timer = 0;
         
         float offset = maxJumpHeight - waterHeight;
+
         while (timer < upDownTime)
         {
             timer += Time.deltaTime;

@@ -6,6 +6,8 @@ public class PlayerObstacle : MonoBehaviour
 {
     private Obstacle obstacle;
     private AutoScroll autoscroll;
+	private PlayerHp playerHp;
+
 
     private bool isHit = false;
 	private float hp;
@@ -23,6 +25,7 @@ public class PlayerObstacle : MonoBehaviour
         obstacle = GetComponent<Obstacle>();
         autoscroll = GetComponent<AutoScroll>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		playerHp = GetComponent<PlayerHp>();
 		blinkInterval = invincibilityTime / blinkCount / 2;
     }
 
@@ -33,6 +36,7 @@ public class PlayerObstacle : MonoBehaviour
             if (isHit) return;
 			isHit = true;
 			GotHit();
+			playerHp.GotDamage(10);
 		}
 	}
 
@@ -40,9 +44,10 @@ public class PlayerObstacle : MonoBehaviour
 	{
 		StartCoroutine(Blink());
 		StartCoroutine(Invincibility());
+
 	}
 
-	IEnumerator Blink()
+	IEnumerator Blink() //±ôºý È¿°ú
 	{
 		int blinkTimes = 0;
 
@@ -56,7 +61,7 @@ public class PlayerObstacle : MonoBehaviour
 		}
 	}
 
-	IEnumerator Invincibility()
+	IEnumerator Invincibility() //¹«Àû
 	{
 		float tempSpeed = GameManager.Instance.GetIncreasementSpeed();
 		GameManager.Instance.DecreaseSpeedRatio(obstacleSlowRatio);

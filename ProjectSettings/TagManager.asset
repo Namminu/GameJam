@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
-  - BoatTrigger
+  - FishItem
+  - DonutItem
   layers:
   - Default
   - TransparentFX
