@@ -26,12 +26,12 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < alwaysThigns.Length; i++) StartCoroutine(DelaySpawn(i));
         
-        Random.InitState((int)Time.realtimeSinceStartup);
     }
 
     private IEnumerator DelaySpawn(int i)
     {
         yield return new WaitForSeconds(2f);
+        Random.InitState(Mathf.CeilToInt(Time.deltaTime * 1000));
         while (true)
         {
             yield return new WaitUntil(() => !isStops[i]);
