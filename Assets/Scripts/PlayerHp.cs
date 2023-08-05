@@ -14,7 +14,12 @@ public class PlayerHp : MonoBehaviour
 
     public float ChangeFaceHp;
     public GameObject Face_Idle;
-	public GameObject Face_lessHp;
+
+    public Sprite[] gotHitSprites;
+    public Sprite lessHpSprite;
+    private Sprite originalSprite;
+
+    private bool isGotHit = false;
 
 	[SerializeField] private float hpHealAmount = 10;
 	
@@ -22,6 +27,7 @@ public class PlayerHp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        originalSprite = Face_Idle.GetComponent<Image>().sprite;
         playerScore = GetComponent<PlayerScore>();
 
         player_CurrentHp = player_MaxHp;
@@ -35,20 +41,17 @@ public class PlayerHp : MonoBehaviour
 
         player_CurrentHp -= timeDecreaseHp / 100;
 
-        if(hpPercent > ChangeFaceHp)
+        if (!isGotHit)
         {
-
-            Face_Idle.SetActive(true);
-			Face_lessHp.SetActive(false);
-		}
-        else 
-        {
-
-			Face_Idle.SetActive(false);
-			Face_lessHp.SetActive(true);
-		}
-
-
+            if (hpPercent > ChangeFaceHp)
+            {
+                Face_Idle.GetComponent<Image>().sprite = originalSprite;
+            }
+            else
+            {
+                Face_Idle.GetComponent<Image>().sprite = lessHpSprite;
+            }
+        }
 
 		if (player_CurrentHp < 0)
 		{
@@ -56,6 +59,11 @@ public class PlayerHp : MonoBehaviour
 		}
 
 	}
+
+    public void GotHit()
+    {
+        StartCoroutine(GotHitIconAnimationPlay());
+    }
 
     public void GotDamage(float damage)
     {
@@ -86,4 +94,19 @@ public class PlayerHp : MonoBehaviour
 			//ü�� ȸ�� ����
 		}
 	}
+
+    IEnumerator GotHitIconAnimationPlay()
+    {
+        isGotHit = true;
+
+        float invincibilityTime = GetComponent<PlayerObstacle>().invincibilityTime;
+        for (int i = 0; i < gotHitSprites.Length; i++)
+        {
+            Face_Idle.GetComponent<Image>().sprite = gotHitSprites[i];
+            yield return new WaitForSeconds(invincibilityTime / gotHitSprites.Length);
+        }
+        Face_Idle.GetComponent<Image>().sprite = originalSprite;
+
+        isGotHit=false;
+    }
 }

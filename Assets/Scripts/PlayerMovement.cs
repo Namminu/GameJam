@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float horizontalSpeed;
 
@@ -19,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float flyingTime;
 
     [SerializeField] private AnimationCurve jumpCurve;
-    
+
+    private Animator playerAnim;
 
     private float jumpBuffer;
     
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         Collider2D col = GetComponent<Collider2D>();
+        playerAnim = GetComponent<Animator>();
         
         maxPosX = Camera.main.ViewportToWorldPoint(new Vector3(0.99f, 0)).x - col.bounds.size.x / 2;
         minPosX = Camera.main.ViewportToWorldPoint(new Vector3(0.01f, 0f)).x + col.bounds.size.x / 2;
@@ -40,10 +41,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(float h, float v)
     {
-
         if (isJumping) return;
 
+        if (h < 0f)
+            playerAnim.SetBool("left", true);
+        else if (h > 0f)
+            playerAnim.SetBool("left", false);
+
         Vector2 nomal = new Vector2(h, v).normalized;
+
         float speedScale = Mathf.Min(1 + (GameManager.Instance.GetIncreasementSpeed() - 1) * 0.6f, 1.22f);
         
         float playerPosX = Mathf.Clamp(transform.position.x + nomal.x * horizontalSpeed * speedScale * Time.deltaTime, minPosX, maxPosX);
@@ -73,12 +79,14 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Jump()
     {
+        playerAnim.SetTrigger("jump");
 
         float upDownTime = 0.34f;
         float timer = 0;
         
         float offset = maxJumpHeight - waterHeight;
-        Instantiate(waterFlip, transform.position, Quaternion.identity);
+        GameObject wf1 = Instantiate(waterFlip, transform.position - new Vector3(0, 0.25f, 0), Quaternion.identity);
+        wf1.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
         while (timer < upDownTime)
         {
             timer += Time.deltaTime;
@@ -100,7 +108,8 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         transform.position = new Vector3(transform.position.x, waterHeight);
-        Instantiate(waterFlip, transform.position, Quaternion.identity);
+        GameObject wf2 = Instantiate(waterFlip, transform.position - new Vector3(0, 0.25f, 0), Quaternion.identity);
+        wf2.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
         isJumping = false;
     }
 }

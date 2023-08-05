@@ -19,6 +19,7 @@ public class PlayerObstacle : MonoBehaviour
 	public int blinkCount = 5;
 
 	public float obstacleSlowRatio;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -37,10 +38,10 @@ public class PlayerObstacle : MonoBehaviour
             if (isHit) return;
 			isHit = true;
 			GotHit();
-			playerHp.GotDamage(collision.GetComponent<IObstacle>().damage);
-			
-		}
-    }
+            playerHp.GotDamage(collision.GetComponent<IObstacle>().damage);
+            playerHp.GotHit();
+        }
+	}
 
 	private void GotHit()
 	{
