@@ -24,6 +24,7 @@ public class PatternManager : MonoBehaviour
     [SerializeField] private float minPatternDelay;
     [SerializeField] private float maxPatternDelay;
 
+    [SerializeField] private bool[] test;
     
     
 
@@ -59,9 +60,8 @@ public class PatternManager : MonoBehaviour
     {
         Spawner.Instance.WaterSpawnStop();
         yield return new WaitForSeconds(1.5f);
-
-        if (Time.time < difficultyUpTime) currentIndex = Random.Range(0, lowerPatternCount);
-        else currentIndex = Random.Range(0, patterns.Length);
+        
+        SetIndex();
         WaitForSeconds spawnDelayWaitForSeconds = new WaitForSeconds(spawnDelay);
         foreach (var line in patterns[currentIndex].pattern)
         {
@@ -78,6 +78,14 @@ public class PatternManager : MonoBehaviour
         yield return new WaitForSeconds(PatternDelay);
         StartCoroutine(Spawn());
     }
+
+    private void SetIndex()
+    {
+        if (Time.time < difficultyUpTime) currentIndex = Random.Range(0, lowerPatternCount);
+        else currentIndex = Random.Range(0, patterns.Length);
+        if(!test[currentIndex]) SetIndex();
+    }
+    
 
     private void SpawnLine(string type, int i)
     {
