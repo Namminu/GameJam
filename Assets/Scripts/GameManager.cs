@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         if (timer > 1f)
         {
             speedIncreasement += Time.deltaTime * speedScale;
+            Debug.Log(speedIncreasement);
 			speedNormal += Time.deltaTime * speedScale;
 			timer = 0f;
         }
