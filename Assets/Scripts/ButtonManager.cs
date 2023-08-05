@@ -7,6 +7,15 @@ public class ButtonManager : MonoBehaviour
 {
     public void StartInGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("InGame");
     }
+
+    public void ToTitle()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Title");
+    }
+    
+    
 }

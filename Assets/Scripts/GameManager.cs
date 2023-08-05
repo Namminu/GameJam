@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-
     [Range(1f, 10f)]
     public float speedScale;
     private float timer;
@@ -60,5 +59,7 @@ public class GameManager : MonoBehaviour
             speedIncreasement += Time.deltaTime * speedScale;
             timer = 0f;
         }
+        
+        if(Input.GetKey(KeyCode.Escape)) GameOverMenu.Instance.GameOver();
     }
 }
