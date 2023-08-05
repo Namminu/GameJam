@@ -59,7 +59,5 @@ public class GameManager : MonoBehaviour
             speedIncreasement += Time.deltaTime * speedScale;
             timer = 0f;
         }
-        
-        if(Input.GetKey(KeyCode.Escape)) GameOverMenu.Instance.GameOver();
     }
 }
