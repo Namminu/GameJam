@@ -702,8 +702,8 @@ Canvas:
   m_GameObject: {fileID: 1092540918}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1953445285}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1775,6 +1775,7 @@ GameObject:
   - component: {fileID: 1556294920}
   - component: {fileID: 1556294922}
   - component: {fileID: 1556294923}
+  - component: {fileID: 1556294926}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1901,7 +1902,8 @@ Transform:
   m_LocalPosition: {x: -5.46, y: -1.68, z: 0}
   m_LocalScale: {x: 0.04118619, y: 0.04118619, z: 0.04118619}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1772159449}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2030,6 +2032,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 706f35fa4c37ab546a75dbda3e0596d2, type: 3}
   lessHpSprite: {fileID: 21300000, guid: 9ac73d9862e74ee40a852b18d4214ae3, type: 3}
   hpHealAmount: 10
+--- !u!114 &1556294926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556294914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5829df58ad822bb4ba8255bba97b0905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FishText: {fileID: 7045979564132067034, guid: 642bb3f6d9d862b40b63aa65b3f97d64, type: 3}
+  HpText: {fileID: 6095699268202901771, guid: 3dd739fa35b01a64fa18e74cc0ea5c94, type: 3}
+  canvas: {fileID: 1092540921}
+  farmingPoint: {fileID: 1772159449}
 --- !u!1 &1564444805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,6 +2261,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1772159448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1772159449}
+  m_Layer: 0
+  m_Name: TextPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1772159449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772159448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.8, y: 14.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1556294918}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1795956315
 GameObject:

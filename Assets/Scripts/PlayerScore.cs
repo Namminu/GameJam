@@ -15,6 +15,8 @@ public class PlayerScore : MonoBehaviour
 	public float player_MaxFish;
 	public float player_CurrentFish;
 
+	private ShowText showText;
+
 	// Start is called before the first frame update
 	void Start()
 	{ 
@@ -22,6 +24,8 @@ public class PlayerScore : MonoBehaviour
 
 		player_MaxFish = 100f;
 		player_CurrentFish = 0.0f;
+
+		showText = GetComponent<ShowText>();
 	}
 	private void Update()
 	{
@@ -42,6 +46,11 @@ public class PlayerScore : MonoBehaviour
 			fishScore += 10;
 			player_CurrentFish += 10;
 			Destroy(collision.gameObject);
+
+			//¹°°í±â ±Û¾¾
+			Vector3 fishPosition = collision.gameObject.transform.position;
+
+			showText.FishTextUIAt(fishPosition);
 
 			//µµ³Ó »ç¿îµå
 		}
