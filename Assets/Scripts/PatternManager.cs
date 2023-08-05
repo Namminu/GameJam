@@ -57,7 +57,7 @@ public class PatternManager : MonoBehaviour
         if (Random.Range(0, 100f) < boatSpawnPercentage) StartCoroutine(Boat());
         else
         {
-            Spawn();
+            StartCoroutine(Spawn());
         }
     }
 

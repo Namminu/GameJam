@@ -2159,10 +2159,10 @@ MonoBehaviour:
   - {fileID: 982093799143353307, guid: d37e82eaef5a48e438c4a4132c971b3e, type: 3}
   - {fileID: 2914672927654077957, guid: 5f323a1000fb3734b9d98c1fd83e414e, type: 3}
   boat: {fileID: 7720377025367396447, guid: 317ac550bedca3e43917670a1ec4ff13, type: 3}
-  boatSpawnPercentage: 20
+  boatSpawnPercentage: 90
   spawnDelay: 0.3
-  minPatternDelay: 5
-  maxPatternDelay: 7
+  minPatternDelay: 3
+  maxPatternDelay: 5
   test: 01010101010101010101010101
 --- !u!4 &1516155388
 Transform:
