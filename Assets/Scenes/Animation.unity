@@ -1844,7 +1844,7 @@ MonoBehaviour:
   - {fileID: 982093799143353307, guid: d37e82eaef5a48e438c4a4132c971b3e, type: 3}
   - {fileID: 2914672927654077957, guid: 5f323a1000fb3734b9d98c1fd83e414e, type: 3}
   boat: {fileID: 7720377025367396447, guid: 317ac550bedca3e43917670a1ec4ff13, type: 3}
-  boatSpawnPercentage: 20
+  boatSpawnPercentage: 40
   spawnDelay: 0.3
   minPatternDelay: 3
   maxPatternDelay: 5
@@ -2049,7 +2049,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276b380a06b29ea43b964cdf359760f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 8300000, guid: 463c200e90ae4d84c96fdaf45acd431d, type: 3}
   isHit: 0
   isDash: 0
   invincibilityTime: 2

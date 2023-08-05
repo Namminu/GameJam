@@ -95,7 +95,6 @@ public class PlayerHp : MonoBehaviour
 		if (collision.CompareTag("DonutItem"))
 		{
             SoundManager.Instance.GetItem();
-            Debug.Log("도넛 : 체력 회복");
 			player_CurrentHp = Mathf.Min(player_CurrentHp + hpHealAmount, player_MaxHp);
             Destroy(collision.gameObject);
             hpBar.fillAmount = player_CurrentHp / player_MaxHp;

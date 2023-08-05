@@ -29,8 +29,8 @@ public class PlayerScore : MonoBehaviour
 	}
 	private void Update()
 	{
-		int elapsedTime = Mathf.FloorToInt(Time.time - startTime); // ��� �ð�(��)�� ����մϴ�
-		timeScore = elapsedTime; // ��� �ð�(��)�� ������ ��ȯ�մϴ�
+		int elapsedTime = Mathf.FloorToInt(Time.time - startTime); // ���?�ð�(��)�� ����մϴ�?
+		timeScore = elapsedTime; // ���?�ð�(��)�� ������ ��ȯ�մϴ�
 
 		TextScore.text = string.Format($"Score  :  {timeScore + fishScore}");
 
@@ -43,11 +43,13 @@ public class PlayerScore : MonoBehaviour
 		if (collision.CompareTag("FishItem"))
 		{
 			SoundManager.Instance.GetItem();
-			Debug.Log("����� : ���� �� ������ ����");
 			fishScore += 10;
 			player_CurrentFish += 10;
 			Destroy(collision.gameObject);
 
+			Vector3 fishPosition = collision.gameObject.transform.position;
+
+			showText.FishTextUIAt(fishPosition);
 		}
 	}
 

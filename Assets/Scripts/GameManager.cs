@@ -56,9 +56,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        speedIncreasement = 1f;
-        speedNormal = 1f;
-		timer = 0f;
+        Init();
     }
 
     private void Update()
@@ -89,5 +87,12 @@ public class GameManager : MonoBehaviour
         }
         
         if(Input.GetKey(KeyCode.Escape)) GameOverMenu.Instance.GameOver();
+    }
+
+    public void Init()
+    {
+        speedIncreasement = 1f;
+        speedNormal = 1f;
+        timer = 0f;
     }
 }
