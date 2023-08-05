@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     public float GetIncreasementSpeed() { return speedIncreasement; }
     public void DecreaseSpeedRatio(float ratio) { speedIncreasement *= ratio; }
+    public void ChangeSpeedRatio(float speed) { speedIncreasement = speed; }
 
     private void Awake()
     {
