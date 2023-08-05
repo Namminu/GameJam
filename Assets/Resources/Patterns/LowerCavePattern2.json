@@ -1,38 +1,38 @@
 {
   "pattern": [
     {
-      "lineA": "a",
-      "lineB": "x",
-      "lineC": "x",
-      "lineD": "a",
-      "lineE": "a"
-    },
-    {
-      "lineA": "a",
-      "lineB": "x",
-      "lineC": "x",
-      "lineD": "a",
-      "lineE": "a"
-    },
-    {
-      "lineA": "a",
-      "lineB": "x",
-      "lineC": "x",
-      "lineD": "a",
-      "lineE": "a"
-    },
-    {
-      "lineA": "x",
-      "lineB": "x",
-      "lineC": "x",
-      "lineD": "a",
-      "lineE": "a"
-    },
-    {
       "lineA": "x",
       "lineB": "x",
       "lineC": "a",
       "lineD": "a",
+      "lineE": "a"
+    },
+    {
+      "lineA": "x",
+      "lineB": "x",
+      "lineC": "x",
+      "lineD": "a",
+      "lineE": "a"
+    },
+    {
+      "lineA": "x",
+      "lineB": "x",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "a"
+    },
+    {
+      "lineA": "a",
+      "lineB": "x",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "a"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "x",
+      "lineD": "x",
       "lineE": "a"
     }
   ]

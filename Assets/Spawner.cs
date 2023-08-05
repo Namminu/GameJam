@@ -9,8 +9,6 @@ public class Spawner : MonoBehaviour
 {
     public static Spawner Instance;
 
-    
-
     [SerializeField] private AlwaysSpawn[] alwaysThigns;
     private bool[] isStops;
 
@@ -31,7 +29,7 @@ public class Spawner : MonoBehaviour
     private IEnumerator DelaySpawn(int i)
     {
         yield return new WaitForSeconds(2f);
-        Random.InitState(Mathf.CeilToInt(Time.deltaTime * 1000));
+        Random.InitState(Mathf.CeilToInt(Time.deltaTime * 1000000));
         while (true)
         {
             yield return new WaitUntil(() => !isStops[i]);
@@ -44,9 +42,9 @@ public class Spawner : MonoBehaviour
 
     public void WaterSpawnStop()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 2; i < isStops.Length; i++)
         {
-            isStops[i + 2] = true;
+            isStops[i] = true;
         }
     }
 

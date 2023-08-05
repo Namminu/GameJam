@@ -8,9 +8,13 @@ using Random = UnityEngine.Random;
 
 public class PatternManager : MonoBehaviour
 {
+    
+    [SerializeField] private int lowerPatternCount = 5;
+    [SerializeField] private float difficultyUpTime;
     [SerializeField]
     private TextAsset[] datas;
     private Alldata[] patterns;
+    
 
     private Vector2[] spawnPos = new Vector2[5];
     
@@ -19,6 +23,11 @@ public class PatternManager : MonoBehaviour
     [SerializeField] private float spawnDelay;
     [SerializeField] private float minPatternDelay;
     [SerializeField] private float maxPatternDelay;
+
+    
+    
+
+    
     private float PatternDelay => Random.Range(minPatternDelay, maxPatternDelay);
 
     private int currentIndex;
@@ -48,7 +57,11 @@ public class PatternManager : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        currentIndex = Random.Range(0, patterns.Length);
+        Spawner.Instance.WaterSpawnStop();
+        yield return new WaitForSeconds(1.5f);
+
+        if (Time.time < difficultyUpTime) currentIndex = Random.Range(0, lowerPatternCount);
+        else currentIndex = Random.Range(lowerPatternCount, patterns.Length);
         WaitForSeconds spawnDelayWaitForSeconds = new WaitForSeconds(spawnDelay);
         foreach (var line in patterns[currentIndex].pattern)
         {
@@ -62,9 +75,7 @@ public class PatternManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         Spawner.Instance.ReStartWaterSpawn();
-        yield return new WaitForSeconds(PatternDelay - 1);
-        Spawner.Instance.WaterSpawnStop();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(PatternDelay);
         StartCoroutine(Spawn());
     }
 

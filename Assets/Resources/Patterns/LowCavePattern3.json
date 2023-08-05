@@ -8,21 +8,7 @@
       "lineE": "a"
     },
     {
-      "lineA": "x",
-      "lineB": "x",
-      "lineC": "x",
-      "lineD": "a",
-      "lineE": "a"
-    },
-    {
-      "lineA": "x",
-      "lineB": "x",
-      "lineC": "a",
-      "lineD": "a",
-      "lineE": "a"
-    },
-    {
-      "lineA": "x",
+      "lineA": "a",
       "lineB": "x",
       "lineC": "x",
       "lineD": "a",
@@ -30,10 +16,24 @@
     },
     {
       "lineA": "a",
-      "lineB": "x",
+      "lineB": "a",
       "lineC": "x",
-      "lineD": "a",
+      "lineD": "x",
       "lineE": "a"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "x"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "a",
+      "lineD": "x",
+      "lineE": "x"
     }
   ]
 }
