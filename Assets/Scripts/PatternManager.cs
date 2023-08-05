@@ -97,11 +97,14 @@ public class PatternManager : MonoBehaviour
 
     private void SetIndex()
     {
-        if (Time.time < difficultyUpTime) currentIndex = Random.Range(0, lowerPatternCount);
-        else currentIndex = Random.Range(0, patterns.Length);
-        if(!test[currentIndex]) SetIndex();
+        while (true)
+        {
+            currentIndex = Random.Range(0, Time.time < difficultyUpTime ? lowerPatternCount : patterns.Length);
+            if (!test[currentIndex]) continue;
+            break;
+        }
     }
-    
+
 
     private void SpawnLine(string type, int i)
     {

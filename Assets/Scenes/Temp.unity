@@ -2125,7 +2125,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 6}
+  m_Size: {x: 1, y: 5.5}
   m_EdgeRadius: 0
 --- !u!114 &1516155387
 MonoBehaviour:
@@ -2140,7 +2140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowerPatternCount: 5
-  difficultyUpTime: 15
+  difficultyUpTime: 0
   datas:
   - {fileID: 4900000, guid: 6a87123b2549df24a8dca321769830d1, type: 3}
   - {fileID: 4900000, guid: eb78005caa9c3aa40b90ad1d4f8acc3d, type: 3}
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   spawnDelay: 0.3
   minPatternDelay: 3
   maxPatternDelay: 5
-  test: 01010101010101010101010101
+  test: 00000000000000000000000100
 --- !u!4 &1516155388
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,7 +2172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516155385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.65, y: -1.76, z: 0.05703481}
+  m_LocalPosition: {x: 11.48, y: -1.87, z: 0.05703481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
