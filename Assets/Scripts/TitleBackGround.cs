@@ -30,6 +30,8 @@ public class TitleBackGround : MonoBehaviour
             spriteRenderer.sprite = t;
             yield return new WaitForSeconds(filmFrame);
         }
+
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Animation");
     }
 }

@@ -7,6 +7,7 @@ public class WaterFlip : MonoBehaviour
 {
     private void OnEnable()
     {
+        SoundManager.Instance.WaterFlip();
         Destroy(gameObject, 0.417f);
     }
 }

@@ -139,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator StartDash()
 	{
+        SoundManager.Instance.Dash();
         dashEffect.SetActive(true);
         playerAnim.SetBool("dash", true);
 		dashTimePer = 10f;
@@ -160,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
 
 		GameManager.Instance.InitFastSpeedRatio();
 
+        SoundManager.Instance.DashEnd();
         playerAnim.SetBool("dash", false);
         dashEffect.SetActive(false);
         isDash = false;

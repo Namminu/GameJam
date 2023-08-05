@@ -2049,6 +2049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276b380a06b29ea43b964cdf359760f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 463c200e90ae4d84c96fdaf45acd431d, type: 3}
   isHit: 0
   isDash: 0
   invincibilityTime: 2
