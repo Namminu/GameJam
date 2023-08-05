@@ -881,8 +881,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276b380a06b29ea43b964cdf359760f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkInterval: 0.05
+  invincibilityTime: 2
   blinkCount: 5
+  obstacleSlowRatio: 0.7
 --- !u!1 &1953445283
 GameObject:
   m_ObjectHideFlags: 0
