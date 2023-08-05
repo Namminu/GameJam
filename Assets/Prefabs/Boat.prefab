@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35151a382f4d6494ba0ffd6a6ca4cb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   speed: 1
 --- !u!1 &1098065456
 GameObject:
@@ -57,6 +58,7 @@ GameObject:
   - component: {fileID: 1098065457}
   - component: {fileID: 1098065458}
   - component: {fileID: 6999255422594373412}
+  - component: {fileID: 3657708748428303954}
   m_Layer: 0
   m_Name: NetImg
   m_TagString: Obstacle
@@ -846,6 +848,19 @@ PolygonCollider2D:
       - {x: -0.32999998, y: 0.84999996}
       - {x: -0.42999998, y: 0.84999996}
       - {x: -0.44, y: 0.85999995}
+--- !u!114 &3657708748428303954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098065456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a95262e7adc1c42b753f75666d4d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
 --- !u!1 &2026047075848704660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35151a382f4d6494ba0ffd6a6ca4cb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   speed: 2
 --- !u!114 &3931727169433154543
 MonoBehaviour:
@@ -1380,6 +1396,7 @@ GameObject:
   - component: {fileID: 8830895594582810785}
   - component: {fileID: 4814612036176938426}
   - component: {fileID: 4861449738938722375}
+  - component: {fileID: 7267009648958522160}
   m_Layer: 0
   m_Name: HookImg
   m_TagString: Obstacle
@@ -1556,6 +1573,19 @@ PolygonCollider2D:
       - {x: 0.39999998, y: 1.36}
       - {x: 0.37, y: 1.3199999}
       - {x: 0.34, y: 1.3199999}
+--- !u!114 &7267009648958522160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154902677246626266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a95262e7adc1c42b753f75666d4d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
 --- !u!1 &8445022700415137154
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.Build;
 using UnityEngine;
 
-public class AutoScroll : MonoBehaviour
+public class AutoScroll : IObstacle
 {
     Vector2 scrollPosition;
     public float speed;
@@ -26,4 +26,10 @@ public class AutoScroll : MonoBehaviour
     {
         Destroy(gameObject);
     }
+}
+
+
+public abstract class IObstacle : MonoBehaviour
+{
+    public float damage;
 }

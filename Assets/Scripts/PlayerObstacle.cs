@@ -33,31 +33,22 @@ public class PlayerObstacle : MonoBehaviour
     {
         if(collision.CompareTag("Obstacle"))
         {
+
             if (isHit) return;
 			isHit = true;
 			GotHit();
-			playerHp.GotDamage(10);
+			playerHp.GotDamage(collision.GetComponent<IObstacle>().damage);
+			
 		}
-        else if (collision.CompareTag("Food"))
-        {
-	        collision.GetComponent<IItem>().Use();
-	        Eat();
-        }
-	}
-
-	private void Eat()
-	{
-		
-	}
+    }
 
 	private void GotHit()
 	{
 		StartCoroutine(Blink());
 		StartCoroutine(Invincibility());
-
 	}
 
-	IEnumerator Blink() //±ôºý È¿°ú
+	IEnumerator Blink() //ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½
 	{
 		int blinkTimes = 0;
 
@@ -75,7 +66,7 @@ public class PlayerObstacle : MonoBehaviour
 		}
 	}
 
-	IEnumerator Invincibility() //¹«Àû
+	IEnumerator Invincibility() //ï¿½ï¿½ï¿½ï¿½
 	{
 		float tempSpeed = GameManager.Instance.GetIncreasementSpeed();
 		GameManager.Instance.DecreaseSpeedRatio(obstacleSlowRatio);

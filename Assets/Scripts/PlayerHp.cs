@@ -16,6 +16,9 @@ public class PlayerHp : MonoBehaviour
     public GameObject Face_Idle;
 	public GameObject Face_lessHp;
 
+	[SerializeField] private float hpHealAmount = 10;
+	
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,19 +69,21 @@ public class PlayerHp : MonoBehaviour
 
     void PlayerDie()
     {
-        //ÇÃ·¹ÀÌ¾î »ç¸Á
-        Debug.Log("ÇÃ·¹ÀÌ¾î »ç¸Á");
+	    GameOverMenu.Instance.GameOver();
+        //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½
+        Debug.Log("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½");
     }
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.tag == "DonutItem")
+		if (collision.CompareTag("DonutItem"))
 		{
-            Debug.Log("µµ³Ó : Ã¼·Â È¸º¹");
-			player_CurrentHp += 10;
-            Destroy(collision.gameObject);
-
-            //Ã¼·Â È¸º¹ »ç¿îµå
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ : Ã¼ï¿½ï¿½ È¸ï¿½ï¿½");
+            player_CurrentHp = Mathf.Min(player_CurrentHp + hpHealAmount, player_MaxHp);
+			Destroy(collision.gameObject);
+			hpBar.fillAmount = player_CurrentHp / player_MaxHp;
+  
+			//Ã¼ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 	}
 }
