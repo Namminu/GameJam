@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isJumping;
     private bool isDash = false;
+    public GameObject dashEffect;
 
     private PlayerScore playerScore;
     private PlayerObstacle playerObstacle;
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         playerObstacle = GetComponent<PlayerObstacle>();
         playerScore = GetComponent<PlayerScore>();
         playerAnim = GetComponent<Animator>();
+        dashEffect.SetActive(false);
 
         maxPosX = Camera.main.ViewportToWorldPoint(new Vector3(0.99f, 0)).x - col.bounds.size.x / 2;
         minPosX = Camera.main.ViewportToWorldPoint(new Vector3(0.01f, 0f)).x + col.bounds.size.x / 2;
@@ -137,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator StartDash()
 	{
+        dashEffect.SetActive(true);
         playerAnim.SetBool("dash", true);
 		dashTimePer = 10f;
 		float dashTime = playerScore.player_CurrentFish / dashTimePer;
@@ -144,9 +147,9 @@ public class PlayerMovement : MonoBehaviour
 
 		GameManager.Instance.IncreaseSpeedRatio(increaseScrollSpeed);
 		isDash = true;
-		playerObstacle.isHit = true;
+        playerObstacle.isDash = true;
 
-		float fishFill = playerScore.fishBar.fillAmount;
+        float fishFill = playerScore.fishBar.fillAmount;
         float maxDashTime = dashTime;
 		while (dashTime > 0f)
         {
@@ -155,12 +158,12 @@ public class PlayerMovement : MonoBehaviour
 			yield return null;
 		}
 
-		GameManager.Instance.ChangeSpeedRatio();
+		GameManager.Instance.InitFastSpeedRatio();
 
         playerAnim.SetBool("dash", false);
-        isDash = false;  
+        dashEffect.SetActive(false);
+        isDash = false;
+        playerObstacle.isDash = false;
         playerScore.player_CurrentFish = 0;
-
-		playerObstacle.isHit = false;
 	}
 }

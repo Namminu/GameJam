@@ -10,6 +10,7 @@ public class PlayerObstacle : MonoBehaviour
 
 
     public bool isHit = false;
+	public bool isDash = false;
 	private float hp;
 
 	private SpriteRenderer spriteRenderer;
@@ -35,7 +36,7 @@ public class PlayerObstacle : MonoBehaviour
         if(collision.CompareTag("Obstacle"))
         {
 
-            if (isHit) return;
+            if (isHit || isDash) return;
 			isHit = true;
 			GotHit();
             playerHp.GotDamage(collision.GetComponent<IObstacle>().damage);
@@ -71,7 +72,7 @@ public class PlayerObstacle : MonoBehaviour
 	{
 		GameManager.Instance.DecreaseSpeedRatio(obstacleSlowRatio);
         yield return new WaitForSeconds(invincibilityTime);
-		GameManager.Instance.ChangeSpeedRatio();
+		GameManager.Instance.InitSlowSpeedRatio();
 		isHit = false;
 	}
 }

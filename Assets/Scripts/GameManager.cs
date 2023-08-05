@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
 
     private float speedIncreasement;
     private float speedNormal;
+
+    public bool isSlow = false;
+    public bool isFast = false;
+    private float slowRatio;
+    private float fastRatio;
+
     public static GameManager Instance
     {
         get
@@ -29,9 +35,10 @@ public class GameManager : MonoBehaviour
     }
      
     public float GetIncreasementSpeed() { return speedIncreasement; }
-    public void DecreaseSpeedRatio(float ratio) { speedIncreasement = speedNormal; speedIncreasement *= ratio; }
-    public void IncreaseSpeedRatio(float ratio) { speedIncreasement = speedNormal; speedIncreasement /= ratio; }
-    public void ChangeSpeedRatio() { speedIncreasement = speedNormal; }
+    public void DecreaseSpeedRatio(float ratio) { isSlow = true; slowRatio = ratio; }
+    public void IncreaseSpeedRatio(float ratio) { isFast = true; fastRatio = ratio; }
+    public void InitSlowSpeedRatio() { isSlow = false; }
+    public void InitFastSpeedRatio() { isFast = false; }
 
     private void Awake()
     {
@@ -57,6 +64,23 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
+        if(isFast && !isSlow)
+        {
+            speedIncreasement = speedNormal / fastRatio;
+        }
+        else if(!isFast && isSlow)
+        {
+            speedIncreasement = speedNormal * slowRatio;
+        }
+        else if(isFast && isSlow)
+        {
+            speedIncreasement = speedNormal * slowRatio / fastRatio;
+        }
+        else
+        {
+            speedIncreasement = speedNormal;
+        }
+
         if (timer > 1f)
         {
             speedIncreasement += Time.deltaTime * speedScale;
