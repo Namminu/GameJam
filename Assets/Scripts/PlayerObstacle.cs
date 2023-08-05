@@ -41,11 +41,6 @@ public class PlayerObstacle : MonoBehaviour
             playerHp.GotDamage(collision.GetComponent<IObstacle>().damage);
             playerHp.GotHit();
         }
-        else if (collision.CompareTag("Food"))
-        {
-	        collision.GetComponent<IItem>().Use();
-	        Eat();
-        }
 	}
 
 	private void GotHit()
