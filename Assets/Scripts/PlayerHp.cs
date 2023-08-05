@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class PlayerHp : MonoBehaviour
 {
     private PlayerScore playerScore;
+    private ShowText showText;
+
 
     public float timeDecreaseHp;
 
@@ -32,6 +34,7 @@ public class PlayerHp : MonoBehaviour
     {
         originalSprite = Face_Idle.GetComponent<Image>().sprite;
         playerScore = GetComponent<PlayerScore>();
+        showText = GetComponent<ShowText>();
 
         player_CurrentHp = player_MaxHp;
 	}
@@ -85,8 +88,6 @@ public class PlayerHp : MonoBehaviour
     void PlayerDie()
     {
 	    GameOverMenu.Instance.GameOver();
-        //�÷��̾� ���
-        Debug.Log("�÷��̾� ���");
     }
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -98,8 +99,13 @@ public class PlayerHp : MonoBehaviour
             Destroy(collision.gameObject);
             hpBar.fillAmount = player_CurrentHp / player_MaxHp;
 
-            //체력 회복 사운드
-        }
+			//도넛 글씨
+			Vector3 donutPosition = collision.gameObject.transform.position;
+
+			showText.HpTextUIAt(donutPosition);
+
+			//체력 회복 사운드
+		}
 	}
 
     IEnumerator GotHitIconAnimationPlay()
