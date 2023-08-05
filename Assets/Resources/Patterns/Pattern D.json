@@ -1,0 +1,60 @@
+{
+  "pattern": [
+    {
+      "lineA": "a",
+      "lineB": "x",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "x"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "x"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "a",
+      "lineD": "x",
+      "lineE": "x"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "a",
+      "lineD": "a",
+      "lineE": "a"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "a",
+      "lineD": "a",
+      "lineE": "x"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "a",
+      "lineD": "x",
+      "lineE": "x"
+    },
+    {
+      "lineA": "a",
+      "lineB": "a",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "x"
+    },
+    {
+      "lineA": "a",
+      "lineB": "x",
+      "lineC": "x",
+      "lineD": "x",
+      "lineE": "x"
+    }
+  ]
+}
