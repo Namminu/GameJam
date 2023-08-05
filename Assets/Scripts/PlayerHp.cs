@@ -53,12 +53,14 @@ public class PlayerHp : MonoBehaviour
             }
         }
 
-		if (player_CurrentHp < 0)
-		{
-			PlayerDie();
-		}
 
-	}
+        if (player_CurrentHp < 0)
+        {
+            player_CurrentHp = 100;
+            PlayerDie();
+        }
+
+    }
 
     public void GotHit()
     {

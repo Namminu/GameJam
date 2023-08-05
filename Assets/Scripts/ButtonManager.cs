@@ -8,7 +8,7 @@ public class ButtonManager : MonoBehaviour
     public void StartInGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("InGame");
+        SceneManager.LoadScene("Animation");
     }
 
     public void ToTitle()

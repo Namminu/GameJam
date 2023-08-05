@@ -2359,7 +2359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b8de5ff1eea3a4d9ce24e37787ba70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDecreaseHp: 2
+  timeDecreaseHp: 0.2
   hpBar: {fileID: 976739426}
   player_MaxHp: 100
   player_CurrentHp: 0
@@ -2371,6 +2371,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35c6666fb06daf546b7eee9b9a73469a, type: 3}
   - {fileID: 21300000, guid: 706f35fa4c37ab546a75dbda3e0596d2, type: 3}
   lessHpSprite: {fileID: 21300000, guid: 9ac73d9862e74ee40a852b18d4214ae3, type: 3}
+  hpHealAmount: 10
 --- !u!1 &1702072337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,16 +2427,17 @@ MonoBehaviour:
     maxSpawnY: 0.8
     minSpawnDelay: 1.7
     maxSpawnDelay: 4.2
-  - prefab: {fileID: 2741093057738050253, guid: 0e5202296d3f0834987b52f4245a6cb2, type: 3}
+  - prefab: {fileID: 6851339562208883407, guid: a405df774f4f2bd4fb7371d6f039e765, type: 3}
     minSpawnY: -3.8
     maxSpawnY: 0.8
     minSpawnDelay: 5
     maxSpawnDelay: 13
-  - prefab: {fileID: 5136653995881156701, guid: 03f56124ccce8a24aa4408963f337def, type: 3}
+  - prefab: {fileID: 913392746945874283, guid: a949e6431cc4b5f4c957aae14b1fbdf9, type: 3}
     minSpawnY: -3.8
     maxSpawnY: 0.8
     minSpawnDelay: 2
     maxSpawnDelay: 2.8
+  fakeFish2: {fileID: 0}
 --- !u!4 &1702072339
 Transform:
   m_ObjectHideFlags: 0
