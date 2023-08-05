@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Quaternion = System.Numerics.Quaternion;
 using Random = UnityEngine.Random;
 
 public class PatternManager : MonoBehaviour
@@ -19,6 +16,8 @@ public class PatternManager : MonoBehaviour
     private Vector2[] spawnPos = new Vector2[5];
     
     [SerializeField] private GameObject[] prefabs;
+    [SerializeField] private GameObject boat;
+    [SerializeField] private float boatSpawnPercentage;
 
     [SerializeField] private float spawnDelay;
     [SerializeField] private float minPatternDelay;
@@ -33,6 +32,8 @@ public class PatternManager : MonoBehaviour
 
     private int currentIndex;
     private int patternType;
+
+    private bool isActing;
 
     private void Awake()
     {
@@ -49,12 +50,27 @@ public class PatternManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Update()
     {
-        StartCoroutine(Spawn());
+        if(isActing) return;
+        isActing = true;
+        if (Random.Range(0, 100f) < boatSpawnPercentage) StartCoroutine(Boat());
+        else
+        {
+            Spawn();
+        }
     }
 
-   
+
+    private IEnumerator Boat()
+    {
+        
+        Instantiate(boat, new Vector3(13f, 2.4f, 0), Quaternion.identity);
+        yield return new WaitForSeconds(10f);
+        isActing = false;
+    }
+
+ 
 
     IEnumerator Spawn()
     {
@@ -76,7 +92,7 @@ public class PatternManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         Spawner.Instance.ReStartWaterSpawn();
         yield return new WaitForSeconds(PatternDelay);
-        StartCoroutine(Spawn());
+        isActing = false;
     }
 
     private void SetIndex()
