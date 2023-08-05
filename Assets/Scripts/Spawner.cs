@@ -10,7 +10,6 @@ public class Spawner : MonoBehaviour
     public static Spawner Instance;
 
     [SerializeField] private AlwaysSpawn[] alwaysThigns;
-    [SerializeField] private GameObject fakeFish2;
     private bool[] isStops;
 
 
@@ -35,7 +34,6 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitUntil(() => !isStops[i]);
             GameObject go = alwaysThigns[i].prefab;
-            if (i == 2 && Random.Range(0f, 1f) > 0.5f) go = fakeFish2;
             Instantiate(go, alwaysThigns[i].spawnPos,
                 alwaysThigns[i].prefab.transform.rotation);
             yield return new WaitForSeconds(alwaysThigns[i].SpawnDelay);

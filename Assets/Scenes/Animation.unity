@@ -2171,7 +2171,6 @@ MonoBehaviour:
     maxSpawnY: 0.8
     minSpawnDelay: 3
     maxSpawnDelay: 5
-  fakeFish2: {fileID: 5136653995881156701, guid: d64d424fcb2df2e439d09c4369fbe298, type: 3}
 --- !u!4 &1702072339
 Transform:
   m_ObjectHideFlags: 0
