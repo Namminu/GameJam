@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3702498556388192845}
   - component: {fileID: 6107982628846307583}
   m_Layer: 0
-  m_Name: Donut
+  m_Name: Donut1
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
