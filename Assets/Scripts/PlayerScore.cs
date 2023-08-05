@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-	private int fishScore = 0;
+	public int fishScore = 0;
 	public int timeScore = 0;
 	public Text TextScore;
 
@@ -46,4 +46,5 @@ public class PlayerScore : MonoBehaviour
 			//µµ³Ó »ç¿îµå
 		}
 	}
+
 }

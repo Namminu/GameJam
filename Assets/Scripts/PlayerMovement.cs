@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -28,12 +29,21 @@ public class PlayerMovement : MonoBehaviour
     private float minPosY;
 
     private bool isJumping;
-    
+    private bool isDash = false;
+
+    private PlayerScore playerScore;
+    private PlayerObstacle playerObstacle;
+
+    public float dashTimePer;
+
+    public float increaseScrollSpeed;
     private void Start()
     {
         Collider2D col = GetComponent<Collider2D>();
-        
-        maxPosX = Camera.main.ViewportToWorldPoint(new Vector3(0.99f, 0)).x - col.bounds.size.x / 2;
+        playerObstacle = GetComponent<PlayerObstacle>();
+		playerScore = GetComponent<PlayerScore>();
+
+		maxPosX = Camera.main.ViewportToWorldPoint(new Vector3(0.99f, 0)).x - col.bounds.size.x / 2;
         minPosX = Camera.main.ViewportToWorldPoint(new Vector3(0.01f, 0f)).x + col.bounds.size.x / 2;
         minPosY = Camera.main.ViewportToWorldPoint(new Vector3(0, 0.01f)).y + col.bounds.size.y / 2;
     }
@@ -67,33 +77,34 @@ public class PlayerMovement : MonoBehaviour
         
         
     }
-    
 
-    
 
-    IEnumerator Jump()
+	IEnumerator Jump()
     {
-
-        float upDownTime = 0.34f;
+		float upDownTime = 0.34f;
         float timer = 0;
         
         float offset = maxJumpHeight - waterHeight;
         Instantiate(waterFlip, transform.position, Quaternion.identity);
         while (timer < upDownTime)
         {
+            Dash();
+
+            if (isDash&&playerScore.player_CurrentFish !=0) { break; }
             timer += Time.deltaTime;
             
             float currentPosY = jumpCurve.Evaluate(timer / upDownTime) * offset;
             transform.position = new Vector3(transform.position.x, currentPosY + waterHeight);
             yield return null;
         }
-        transform.position = new Vector3(transform.position.x, maxJumpHeight);
-        timer = upDownTime;
-        yield return new WaitForSeconds(flyingTime);
         
         while (timer > 0)
         {
-            timer -= Time.deltaTime;
+            Dash();
+			if (isDash) timer += Time.deltaTime;
+			timer -= Time.deltaTime;
+
+            timer = Mathf.Min(timer, maxJumpHeight);
             
             float currentPosY = jumpCurve.Evaluate(timer / upDownTime) * offset;
             transform.position = new Vector3(transform.position.x, currentPosY + waterHeight);
@@ -103,4 +114,41 @@ public class PlayerMovement : MonoBehaviour
         Instantiate(waterFlip, transform.position, Quaternion.identity);
         isJumping = false;
     }
+
+
+    public void Dash()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if(!isDash&& playerScore.player_CurrentFish!=0)
+                StartCoroutine(StartDash());
+        }
+    }
+
+    IEnumerator StartDash()
+	{
+		dashTimePer = 10f;
+		float dashTime = playerScore.player_CurrentFish / dashTimePer;
+        float tempTime = GameManager.Instance.GetIncreasementSpeed();
+
+		GameManager.Instance.IncreaseSpeedRatio(increaseScrollSpeed);
+		isDash = true;
+		playerObstacle.isHit = true;
+
+		float fishFill = playerScore.fishBar.fillAmount;
+        float maxDashTime = dashTime;
+		while (dashTime > 0f)
+        {
+            dashTime -= Time.deltaTime;
+			playerScore.fishBar.fillAmount = Mathf.Lerp(0f, fishFill, dashTime / maxDashTime);
+			yield return null;
+		}
+
+		GameManager.Instance.ChangeSpeedRatio(tempTime);
+
+		isDash = false;  
+        playerScore.player_CurrentFish = 0;
+
+		playerObstacle.isHit = false;
+	}
 }

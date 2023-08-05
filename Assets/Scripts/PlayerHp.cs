@@ -12,9 +12,12 @@ public class PlayerHp : MonoBehaviour
     public float player_MaxHp;
     public float player_CurrentHp;
 
+
     public float ChangeFaceHp;
     public GameObject Face_Idle;
 	public GameObject Face_lessHp;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,14 +36,14 @@ public class PlayerHp : MonoBehaviour
         player_CurrentHp -= timeDecreaseHp / 100;
 
         if(hpPercent > ChangeFaceHp)
-        {
-
+        { 
+            hpBar.color = new Color(0, 215, 0, 255);
             Face_Idle.SetActive(true);
 			Face_lessHp.SetActive(false);
 		}
         else 
         {
-
+			hpBar.color = new Color(255, 0, 0, 255);
 			Face_Idle.SetActive(false);
 			Face_lessHp.SetActive(true);
 		}
@@ -81,4 +84,6 @@ public class PlayerHp : MonoBehaviour
             //체력 회복 사운드
 		}
 	}
+
+
 }

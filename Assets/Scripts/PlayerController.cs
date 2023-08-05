@@ -7,18 +7,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-    private PlayerObstacle playerObstacle;
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        playerObstacle = GetComponent<PlayerObstacle>();
 	}
 
 
     private void Update()
     {
         Move();
+        Dash();
     }
 
 
@@ -30,5 +29,13 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Vertical")) v = Input.GetAxisRaw("Vertical");
 
         playerMovement.Move(h, v);
+    }
+
+    private void Dash()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+			//StartCoroutine(playerMovement.DashWhileJump());
+		}
     }
 }

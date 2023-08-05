@@ -9,7 +9,7 @@ public class PlayerObstacle : MonoBehaviour
 	private PlayerHp playerHp;
 
 
-    private bool isHit = false;
+    public bool isHit = false;
 	private float hp;
 
 	private SpriteRenderer spriteRenderer;
@@ -38,16 +38,6 @@ public class PlayerObstacle : MonoBehaviour
 			GotHit();
 			playerHp.GotDamage(10);
 		}
-        else if (collision.CompareTag("Food"))
-        {
-	        collision.GetComponent<IItem>().Use();
-	        Eat();
-        }
-	}
-
-	private void Eat()
-	{
-		
 	}
 
 	private void GotHit()
