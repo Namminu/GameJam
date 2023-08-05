@@ -59,10 +59,12 @@ public class PatternManager : MonoBehaviour
             SpawnLine(line.lineE, 4);
             yield return spawnDelayWaitForSeconds;
         }
-        Spawner.Instance.ReStartWaterSpawn();
-        yield return new WaitForSeconds(PatternDelay);
-        Spawner.Instance.WaterSpawnStop();
+
         yield return new WaitForSeconds(1);
+        Spawner.Instance.ReStartWaterSpawn();
+        yield return new WaitForSeconds(PatternDelay - 1);
+        Spawner.Instance.WaterSpawnStop();
+        yield return new WaitForSeconds(2);
         StartCoroutine(Spawn());
     }
 

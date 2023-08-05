@@ -264,14 +264,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   datas:
-  - {fileID: 4900000, guid: b68f81ed3bb1bfe42853212800a933b1, type: 3}
-  - {fileID: 4900000, guid: 4fb2a6b3e8c4d074197189159bce4c50, type: 3}
+  - {fileID: 4900000, guid: e99efaccf5794cd4aac654c8ce1afd20, type: 3}
+  - {fileID: 4900000, guid: ae672778b57575f44abb35514da9589d, type: 3}
   - {fileID: 4900000, guid: 27b252c01f3377a449ca98dac025fa72, type: 3}
+  - {fileID: 4900000, guid: 460a7604d47e7f14fa33be0a002f826e, type: 3}
   prefabs:
   - {fileID: 982093799143353307, guid: d37e82eaef5a48e438c4a4132c971b3e, type: 3}
   - {fileID: 2914672927654077957, guid: 5f323a1000fb3734b9d98c1fd83e414e, type: 3}
-  spawnDelay: 0
-  patternDelay: 1
+  spawnDelay: 0.5
+  minPatternDelay: 4
+  maxPatternDelay: 7
 --- !u!4 &1143321196
 Transform:
   m_ObjectHideFlags: 0
@@ -335,7 +337,7 @@ MonoBehaviour:
   horizontalSpeed: 17
   waterHeight: 1.35
   maxJumpHeight: 4.2
-  flyingTime: 1
+  flyingTime: 0.35
   jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -349,17 +351,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5736394
-      value: 0.2053372
-      inSlope: 0.46391428
-      outSlope: 0.46391428
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9485779
-      value: 0.5307121
+      time: 1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -429,7 +422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556294914}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -7.31, y: 0.02, z: 0}
+  m_LocalPosition: {x: -8.42, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -483,8 +476,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysThigns:
   - prefab: {fileID: 4563447607192309557, guid: 7d73d62703a51f243a0d7008f5a255ea, type: 3}
-    spawnPos: {x: 12, y: -4.6}
-    spawnDelay: 1.3
+    minSpawnY: -4.8
+    maxSpawnY: -4.8
+    minSpawnDelay: 3.8
+    maxSpawnDelay: 7.4
+  - prefab: {fileID: 6993218958566722043, guid: 2bff85a9d3f55f94797e1079d9528a37, type: 3}
+    minSpawnY: 4.35
+    maxSpawnY: 4.35
+    minSpawnDelay: 1.7
+    maxSpawnDelay: 2.8
+  - prefab: {fileID: 3476897175384255211, guid: 88936414e8451ba4d92998f0837283d2, type: 3}
+    minSpawnY: -3
+    maxSpawnY: 0
+    minSpawnDelay: 5.4
+    maxSpawnDelay: 8.7
+  - prefab: {fileID: 982093799143353307, guid: d37e82eaef5a48e438c4a4132c971b3e, type: 3}
+    minSpawnY: -3.8
+    maxSpawnY: 0.7
+    minSpawnDelay: 0.3
+    maxSpawnDelay: 1
+  - prefab: {fileID: 2914672927654077957, guid: 5f323a1000fb3734b9d98c1fd83e414e, type: 3}
+    minSpawnY: -3.8
+    maxSpawnY: 0.8
+    minSpawnDelay: 1.7
+    maxSpawnDelay: 4.2
 --- !u!4 &1716167852
 Transform:
   m_ObjectHideFlags: 0

@@ -44,8 +44,7 @@ public class Spawner : MonoBehaviour
 
     public void WaterSpawnStop()
     {
-
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             isStops[i + 2] = true;
         }

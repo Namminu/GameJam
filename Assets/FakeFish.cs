@@ -9,7 +9,6 @@ public class FakeFish : MonoBehaviour
 
     [SerializeField]
     private AnimationCurve curve;
-    [SerializeField] private float speed;
 
     [SerializeField] private float minHeight;
     [SerializeField] private float maxHeight;
@@ -24,10 +23,8 @@ public class FakeFish : MonoBehaviour
         else if (timer < 0) toggle = false;
     }
 
-    void Update()
+    void LateUpdate()
     {
-        transform.position += Vector3.left * (speed * Time.deltaTime);
-        
         if (timer > twistTime) toggle = true;
         else if (timer < 0) toggle = false;
 
