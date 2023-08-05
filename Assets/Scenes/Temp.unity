@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8773585, g: 0.8152813, b: 0.8152813, a: 1}
+  m_Color: {r: 0.8773585, g: 0.8152813, b: 0.8152813, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.2901961}
+  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.69411767}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1880,8 +1880,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281414011
-  m_fontColor: {r: 0.4811321, g: 0.19290674, b: 0.19290674, a: 1}
+    rgba: 4280887766
+  m_fontColor: {r: 0.8396226, g: 0.16237983, b: 0.16237983, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2140,7 +2140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lowerPatternCount: 5
-  difficultyUpTime: 0
+  difficultyUpTime: 20
   datas:
   - {fileID: 4900000, guid: 6a87123b2549df24a8dca321769830d1, type: 3}
   - {fileID: 4900000, guid: eb78005caa9c3aa40b90ad1d4f8acc3d, type: 3}
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   spawnDelay: 0.3
   minPatternDelay: 3
   maxPatternDelay: 5
-  test: 00000000000000000000000100
+  test: 01010101010101010101010101
 --- !u!4 &1516155388
 Transform:
   m_ObjectHideFlags: 0
@@ -2228,8 +2228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1976fb547b03b0242aa1cfc555290039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalSpeed: 10
-  horizontalSpeed: 17
+  verticalSpeed: 9
+  horizontalSpeed: 12
   waterFlip: {fileID: 3941265921156739121, guid: 0c897db8c2de2394287d1870c8e57593, type: 3}
   waterHeight: 1.35
   maxJumpHeight: 4.2
@@ -2487,13 +2487,8 @@ MonoBehaviour:
   - prefab: {fileID: 3476897175384255211, guid: 88936414e8451ba4d92998f0837283d2, type: 3}
     minSpawnY: -3
     maxSpawnY: 0
-    minSpawnDelay: 8.4
-    maxSpawnDelay: 17.4
-  - prefab: {fileID: 1529751484375648319, guid: d64d424fcb2df2e439d09c4369fbe298, type: 3}
-    minSpawnY: -3
-    maxSpawnY: 0
-    minSpawnDelay: 14.2
-    maxSpawnDelay: 13.7
+    minSpawnDelay: 7.2
+    maxSpawnDelay: 12.3
   - prefab: {fileID: 982093799143353307, guid: d37e82eaef5a48e438c4a4132c971b3e, type: 3}
     minSpawnY: -3.8
     maxSpawnY: 0.7
@@ -2512,8 +2507,9 @@ MonoBehaviour:
   - prefab: {fileID: 913392746945874283, guid: a949e6431cc4b5f4c957aae14b1fbdf9, type: 3}
     minSpawnY: -3.8
     maxSpawnY: 0.8
-    minSpawnDelay: 2
-    maxSpawnDelay: 2.8
+    minSpawnDelay: 3
+    maxSpawnDelay: 5
+  fakeFish2: {fileID: 1529751484375648319, guid: d64d424fcb2df2e439d09c4369fbe298, type: 3}
 --- !u!4 &1702072339
 Transform:
   m_ObjectHideFlags: 0
