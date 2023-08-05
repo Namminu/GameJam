@@ -1,25 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private AlwaysSpawn[] alwaysThigns;
 
-    private void Update()
+    private void Start()
     {
-        for (int i = 0; i < alwaysThigns.Length; i++)
+        for (int i = 0; i < alwaysThigns.Length; i++) StartCoroutine(DelaySpawn(i));
+    }
+
+    private IEnumerator DelaySpawn(int i)
+    {
+        yield return new WaitForSeconds(2f);
+        while (true)
         {
-            alwaysThigns[i].spawnTimer += Time.deltaTime;
-            if (alwaysThigns[i].spawnDelay < alwaysThigns[i].spawnTimer)
-            {
-                alwaysThigns[i].spawnTimer = 0;
-                Instantiate(alwaysThigns[i].prefab, alwaysThigns[i].spawnPos,
-                    alwaysThigns[i].prefab.transform.rotation);
-            }
+            Instantiate(alwaysThigns[i].prefab, alwaysThigns[i].spawnPos,
+                alwaysThigns[i].prefab.transform.rotation);
+            yield return new WaitForSeconds(alwaysThigns[i].SpawnDelay);
         }
     }
+    
 }
 
 
@@ -28,7 +33,11 @@ public class AlwaysSpawn
 {
     public GameObject prefab;
     public Vector2 spawnPos;
-    public float spawnDelay;
-    [NonSerialized]
-    public float spawnTimer;
+    [SerializeField]
+    private float minSpawnDelay;
+    [SerializeField]
+    private float maxSpawnDelay;
+
+    public float SpawnDelay => Random.Range(minSpawnDelay, maxSpawnDelay);
+
 }

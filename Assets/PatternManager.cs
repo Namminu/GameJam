@@ -11,8 +11,7 @@ public class PatternManager : MonoBehaviour
     [SerializeField]
     private TextAsset[] datas;
     private Alldata[] patterns;
-    
-    
+
     private Vector2[] spawnPos = new Vector2[5];
     
     [SerializeField] private GameObject[] prefabs;
