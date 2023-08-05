@@ -9,7 +9,7 @@ public class PlayerObstacle : MonoBehaviour
 	private PlayerHp playerHp;
 
 
-    private bool isHit = false;
+    public bool isHit = false;
 	private float hp;
 
 	private SpriteRenderer spriteRenderer;
@@ -41,6 +41,11 @@ public class PlayerObstacle : MonoBehaviour
             playerHp.GotDamage(collision.GetComponent<IObstacle>().damage);
             playerHp.GotHit();
         }
+        else if (collision.CompareTag("Food"))
+        {
+	        collision.GetComponent<IItem>().Use();
+	        Eat();
+        }
 	}
 
 	private void GotHit()
@@ -69,10 +74,9 @@ public class PlayerObstacle : MonoBehaviour
 
 	IEnumerator Invincibility() //����
 	{
-		float tempSpeed = GameManager.Instance.GetIncreasementSpeed();
 		GameManager.Instance.DecreaseSpeedRatio(obstacleSlowRatio);
         yield return new WaitForSeconds(invincibilityTime);
-		GameManager.Instance.ChangeSpeedRatio(tempSpeed);
+		GameManager.Instance.ChangeSpeedRatio();
 		isHit = false;
 	}
 }

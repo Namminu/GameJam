@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private float timer;
 
     private float speedIncreasement;
+    private float speedNormal;
     public static GameManager Instance
     {
         get
@@ -26,10 +27,11 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
+     
     public float GetIncreasementSpeed() { return speedIncreasement; }
-    public void DecreaseSpeedRatio(float ratio) { speedIncreasement *= ratio; }
-    public void ChangeSpeedRatio(float speed) { speedIncreasement = speed; }
+    public void DecreaseSpeedRatio(float ratio) { speedIncreasement = speedNormal; speedIncreasement *= ratio; }
+    public void IncreaseSpeedRatio(float ratio) { speedIncreasement = speedNormal; speedIncreasement /= ratio; }
+    public void ChangeSpeedRatio() { speedIncreasement = speedNormal; }
 
     private void Awake()
     {
@@ -48,7 +50,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         speedIncreasement = 1f;
-        timer = 0f;
+        speedNormal = 1f;
+		timer = 0f;
     }
 
     private void Update()
@@ -57,7 +60,10 @@ public class GameManager : MonoBehaviour
         if (timer > 1f)
         {
             speedIncreasement += Time.deltaTime * speedScale;
-            timer = 0f;
+			speedNormal += Time.deltaTime * speedScale;
+			timer = 0f;
         }
+        
+        if(Input.GetKey(KeyCode.Escape)) GameOverMenu.Instance.GameOver();
     }
 }

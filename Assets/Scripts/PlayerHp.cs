@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
+
 public class PlayerHp : MonoBehaviour
 {
     private PlayerScore playerScore;
@@ -12,6 +14,7 @@ public class PlayerHp : MonoBehaviour
     public Image hpBar;
     public float player_MaxHp;
     private float player_CurrentHp;
+
 
     public float ChangeFaceHp;
     public GameObject Face_Idle;
@@ -46,10 +49,12 @@ public class PlayerHp : MonoBehaviour
         {
             if (hpPercent > ChangeFaceHp)
             {
+                hpBar.color = new Color(0, 215, 0, 255);
                 Face_Idle.GetComponent<Image>().sprite = originalSprite;
             }
             else
             {
+                hpBar.color = new Color(255, 0, 0, 255);
                 Face_Idle.GetComponent<Image>().sprite = lessHpSprite;
             }
         }
@@ -89,13 +94,13 @@ public class PlayerHp : MonoBehaviour
 	{
 		if (collision.CompareTag("DonutItem"))
 		{
-            Debug.Log("���� : ü�� ȸ��");
-            player_CurrentHp = Mathf.Min(player_CurrentHp + hpHealAmount, player_MaxHp);
-			Destroy(collision.gameObject);
-			hpBar.fillAmount = player_CurrentHp / player_MaxHp;
-  
-			//ü�� ȸ�� ����
-		}
+            Debug.Log("도넛 : 체력 회복");
+			player_CurrentHp = Mathf.Min(player_CurrentHp + hpHealAmount, player_MaxHp);
+            Destroy(collision.gameObject);
+            hpBar.fillAmount = player_CurrentHp / player_MaxHp;
+
+            //체력 회복 사운드
+        }
 	}
 
     IEnumerator GotHitIconAnimationPlay()
@@ -110,6 +115,6 @@ public class PlayerHp : MonoBehaviour
         }
         Face_Idle.GetComponent<Image>().sprite = originalSprite;
 
-        isGotHit=false;
+        isGotHit = false;
     }
 }
