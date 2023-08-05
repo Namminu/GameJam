@@ -2436,14 +2436,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b8de5ff1eea3a4d9ce24e37787ba70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDecreaseHp: 0.5
+  timeDecreaseHp: 0.2
   hpBar: {fileID: 976739426}
   player_MaxHp: 100
-  player_CurrentHp: 0
   ChangeFaceHp: 0.3
   Face_Idle: {fileID: 1497526165}
-  Face_lessHp: {fileID: 1410703757}
-  hpHealAmount: 20
+  gotHitSprites:
+  - {fileID: 21300000, guid: fc710e4b34a1f44438953c9099cb52a3, type: 3}
+  - {fileID: 21300000, guid: 1e8c099b3d22fa74db163a47acc87bbc, type: 3}
+  - {fileID: 21300000, guid: 35c6666fb06daf546b7eee9b9a73469a, type: 3}
+  - {fileID: 21300000, guid: 706f35fa4c37ab546a75dbda3e0596d2, type: 3}
+  lessHpSprite: {fileID: 21300000, guid: 9ac73d9862e74ee40a852b18d4214ae3, type: 3}
+  hpHealAmount: 10
 --- !u!1 &1702072337
 GameObject:
   m_ObjectHideFlags: 0

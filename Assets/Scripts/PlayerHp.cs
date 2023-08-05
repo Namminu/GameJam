@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class PlayerHp : MonoBehaviour
 
     public Image hpBar;
     public float player_MaxHp;
-    public float player_CurrentHp;
+    private float player_CurrentHp;
 
     public float ChangeFaceHp;
     public GameObject Face_Idle;
