@@ -137,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator StartDash()
 	{
+        SoundManager.Instance.Dash();
         playerAnim.SetBool("dash", true);
 		dashTimePer = 10f;
 		float dashTime = playerScore.player_CurrentFish / dashTimePer;
@@ -157,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
 		GameManager.Instance.ChangeSpeedRatio();
 
+        SoundManager.Instance.DashEnd();
         playerAnim.SetBool("dash", false);
         isDash = false;  
         playerScore.player_CurrentFish = 0;

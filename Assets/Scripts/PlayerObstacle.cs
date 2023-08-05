@@ -8,8 +8,7 @@ public class PlayerObstacle : MonoBehaviour
     private AutoScroll autoscroll;
 	private PlayerHp playerHp;
 
-
-    public bool isHit = false;
+	public bool isHit = false;
 	private float hp;
 
 	private SpriteRenderer spriteRenderer;
@@ -37,6 +36,7 @@ public class PlayerObstacle : MonoBehaviour
 
             if (isHit) return;
 			isHit = true;
+			SoundManager.Instance.PlayHit();
 			GotHit();
             playerHp.GotDamage(collision.GetComponent<IObstacle>().damage);
             playerHp.GotHit();

@@ -25,8 +25,8 @@ public class PlayerScore : MonoBehaviour
 	}
 	private void Update()
 	{
-		int elapsedTime = Mathf.FloorToInt(Time.time - startTime); // °æ°ú ½Ã°£(ÃÊ)À» °è»êÇÕ´Ï´Ù
-		timeScore = elapsedTime; // °æ°ú ½Ã°£(ÃÊ)À» Á¡¼ö·Î º¯È¯ÇÕ´Ï´Ù
+		int elapsedTime = Mathf.FloorToInt(Time.time - startTime); // ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½(ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½
+		timeScore = elapsedTime; // ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½(ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Õ´Ï´ï¿½
 
 		TextScore.text = string.Format($"Score  :  {timeScore + fishScore}");
 
@@ -36,14 +36,15 @@ public class PlayerScore : MonoBehaviour
 
 	public void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.tag == "FishItem")
+		if (collision.CompareTag("FishItem"))
 		{
-			Debug.Log("¹°°í±â : Á¡¼ö ¹× °ÔÀÌÁö Áõ°¡");
+			SoundManager.Instance.GetItem();
+			Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			fishScore += 10;
 			player_CurrentFish += 10;
 			Destroy(collision.gameObject);
 
-			//µµ³Ó »ç¿îµå
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 	}
 

@@ -21,6 +21,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void GameOver()
     {
+        SoundManager.Instance.GameOver();
         Time.timeScale = 0;
         canvas.enabled = true;
     }
