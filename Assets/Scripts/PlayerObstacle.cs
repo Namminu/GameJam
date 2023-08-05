@@ -44,9 +44,10 @@ public class PlayerObstacle : MonoBehaviour
 	{
 		StartCoroutine(Blink());
 		StartCoroutine(Invincibility());
+
 	}
 
-	IEnumerator Blink()
+	IEnumerator Blink() //±ôºý È¿°ú
 	{
 		int blinkTimes = 0;
 
@@ -60,7 +61,7 @@ public class PlayerObstacle : MonoBehaviour
 		}
 	}
 
-	IEnumerator Invincibility()
+	IEnumerator Invincibility() //¹«Àû
 	{
 		float tempSpeed = GameManager.Instance.GetIncreasementSpeed();
 		GameManager.Instance.DecreaseSpeedRatio(obstacleSlowRatio);

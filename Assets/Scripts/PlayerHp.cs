@@ -12,6 +12,9 @@ public class PlayerHp : MonoBehaviour
     public float player_MaxHp;
     public float player_CurrentHp;
 
+    public float ChangeFaceHp;
+    public GameObject Face_Idle;
+	public GameObject Face_lessHp;
 
     // Start is called before the first frame update
     void Start()
@@ -19,22 +22,36 @@ public class PlayerHp : MonoBehaviour
         playerScore = GetComponent<PlayerScore>();
 
         player_CurrentHp = player_MaxHp;
-
 	}
 
     // Update is called once per frame
-    void Update()
+    void Update() 
     {
         float hpPercent = player_CurrentHp / player_MaxHp;
         hpBar.fillAmount = hpPercent;
 
         player_CurrentHp -= timeDecreaseHp / 100;
 
+        if(hpPercent > ChangeFaceHp)
+        {
+
+            Face_Idle.SetActive(true);
+			Face_lessHp.SetActive(false);
+		}
+        else 
+        {
+
+			Face_Idle.SetActive(false);
+			Face_lessHp.SetActive(true);
+		}
+
+
+
 		if (player_CurrentHp < 0)
 		{
 			PlayerDie();
 		}
-		//Debug.Log(playerScore.timeScore / playerScore.timeScore);
+
 	}
 
     public void GotDamage(float damage)
