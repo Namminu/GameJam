@@ -12,6 +12,7 @@ public class PatternManager : MonoBehaviour
     private TextAsset[] datas;
     private Alldata[] patterns;
     
+    
     private Vector2[] spawnPos = new Vector2[5];
     
     [SerializeField] private GameObject[] prefabs;
@@ -20,21 +21,16 @@ public class PatternManager : MonoBehaviour
     [SerializeField] private float patternDelay;
 
     private int currentIndex;
-
     private int patternType;
-    
-    private float spaceY;
-    private Vector2 offset;
 
     private void Awake()
     {
         patterns = new Alldata[datas.Length];
         for(int i = 0; i < datas.Length; i++) patterns[i] = JsonUtility.FromJson<Alldata>(datas[i].text);
 
-        Debug.Log(patterns[0].pattern);
         BoxCollider2D col = GetComponent<BoxCollider2D>();
-        spaceY = col.size.y / 5;
-        offset = new Vector2(transform.position.x, transform.position.y - col.size.y / 2);
+        float spaceY = col.size.y / 5;
+        Vector2 offset = new Vector2(transform.position.x, transform.position.y - col.size.y / 2);
         
         for (int i = 0; i < 5; i++)
         {
@@ -46,7 +42,9 @@ public class PatternManager : MonoBehaviour
     {
         StartCoroutine(Spawn());
     }
-    
+
+   
+
     IEnumerator Spawn()
     {
         currentIndex = Random.Range(0, patterns.Length);
@@ -67,7 +65,7 @@ public class PatternManager : MonoBehaviour
     private void SpawnLine(string type, int i)
     {
         GameObject go;
-        
+
         switch (type)
         {
             case "a":
@@ -79,10 +77,14 @@ public class PatternManager : MonoBehaviour
             default:
                 return;
         }
-
-        Instantiate(go, spawnPos[i], UnityEngine.Quaternion.Euler(new Vector3(0, 0, 90)));
+        if(go != null)
+        {
+            Instantiate(go, spawnPos[i], go.transform.rotation);
+        }
     }
 }
+
+
 
 
 [Serializable]
