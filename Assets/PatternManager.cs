@@ -61,7 +61,7 @@ public class PatternManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         if (Time.time < difficultyUpTime) currentIndex = Random.Range(0, lowerPatternCount);
-        else currentIndex = Random.Range(lowerPatternCount, patterns.Length);
+        else currentIndex = Random.Range(0, patterns.Length);
         WaitForSeconds spawnDelayWaitForSeconds = new WaitForSeconds(spawnDelay);
         foreach (var line in patterns[currentIndex].pattern)
         {

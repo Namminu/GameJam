@@ -276,7 +276,7 @@ MonoBehaviour:
     minSpawnY: -3.8
     maxSpawnY: 0.7
     minSpawnDelay: 0.3
-    maxSpawnDelay: 1
+    maxSpawnDelay: 1.5
   - prefab: {fileID: 2914672927654077957, guid: 5f323a1000fb3734b9d98c1fd83e414e, type: 3}
     minSpawnY: -3.8
     maxSpawnY: 0.8
@@ -290,8 +290,8 @@ MonoBehaviour:
   - prefab: {fileID: 5136653995881156701, guid: 03f56124ccce8a24aa4408963f337def, type: 3}
     minSpawnY: -3.8
     maxSpawnY: 0.8
-    minSpawnDelay: 0.5
-    maxSpawnDelay: 1.1
+    minSpawnDelay: 2
+    maxSpawnDelay: 2.8
 --- !u!4 &158097572
 Transform:
   m_ObjectHideFlags: 0
@@ -363,16 +363,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d540765a9102f2489507683a4fac7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lowerPatternCount: 3
+  difficultyUpTime: 15
   datas:
-  - {fileID: 4900000, guid: e99efaccf5794cd4aac654c8ce1afd20, type: 3}
-  - {fileID: 4900000, guid: ae672778b57575f44abb35514da9589d, type: 3}
-  - {fileID: 4900000, guid: 27b252c01f3377a449ca98dac025fa72, type: 3}
-  - {fileID: 4900000, guid: 460a7604d47e7f14fa33be0a002f826e, type: 3}
+  - {fileID: 4900000, guid: 6a87123b2549df24a8dca321769830d1, type: 3}
+  - {fileID: 4900000, guid: eb78005caa9c3aa40b90ad1d4f8acc3d, type: 3}
+  - {fileID: 4900000, guid: cae00422c06ea5449a7f29dd87234efc, type: 3}
+  - {fileID: 4900000, guid: ccee7bd62ddc6af469d6baf90f5436ee, type: 3}
+  - {fileID: 4900000, guid: 42c5a795ffd93b146b69e8ca17e8a202, type: 3}
+  - {fileID: 4900000, guid: 2e88f62d17a275345858e7192c871a21, type: 3}
+  - {fileID: 4900000, guid: ee6bac0853ff3ad42a12b1c79d6fe5d8, type: 3}
   prefabs:
   - {fileID: 982093799143353307, guid: d37e82eaef5a48e438c4a4132c971b3e, type: 3}
   - {fileID: 2914672927654077957, guid: 5f323a1000fb3734b9d98c1fd83e414e, type: 3}
-  spawnDelay: 0.5
-  minPatternDelay: 4
+  spawnDelay: 0.3
+  minPatternDelay: 3.4
   maxPatternDelay: 7
 --- !u!4 &281174633
 Transform:
@@ -664,8 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1976fb547b03b0242aa1cfc555290039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalSpeed: 8
-  horizontalSpeed: 10
+  verticalSpeed: 9
+  horizontalSpeed: 12
   waterHeight: 1.35
   maxJumpHeight: 4.2
   flyingTime: 0.35
