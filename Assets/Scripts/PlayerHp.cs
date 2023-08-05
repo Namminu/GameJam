@@ -47,15 +47,7 @@ public class PlayerHp : MonoBehaviour
 			Face_Idle.SetActive(false);
 			Face_lessHp.SetActive(true);
 		}
-
-
-
-		if (player_CurrentHp < 0)
-		{
-			PlayerDie();
-		}
-
-	}
+    }
 
     public void GotDamage(float damage)
     {
@@ -63,18 +55,11 @@ public class PlayerHp : MonoBehaviour
 
 		if (player_CurrentHp < 0)
 		{
-			PlayerDie();
+			GameOverMenu.Instance.GameOver();
 		}
 	}
 
-    void PlayerDie()
-    {
-	    GameOverMenu.Instance.GameOver();
-        //�÷��̾� ���
-        Debug.Log("�÷��̾� ���");
-    }
-
-	private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("DonutItem"))
 		{
