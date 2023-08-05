@@ -67,10 +67,10 @@ public class PlayerObstacle : MonoBehaviour
 
 	IEnumerator Invincibility() //¹«Àû
 	{
-		float tempSpeed = GameManager.Instance.GetIncreasementSpeed();
+		//float tempSpeed = GameManager.Instance.GetIncreasementSpeed();
 		GameManager.Instance.DecreaseSpeedRatio(obstacleSlowRatio);
         yield return new WaitForSeconds(invincibilityTime);
-		GameManager.Instance.ChangeSpeedRatio(tempSpeed);
+		GameManager.Instance.ChangeSpeedRatio();
 		isHit = false;
 	}
 }

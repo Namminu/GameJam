@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		dashTimePer = 10f;
 		float dashTime = playerScore.player_CurrentFish / dashTimePer;
-        float tempTime = GameManager.Instance.GetIncreasementSpeed();
+        //float tempTime = GameManager.Instance.GetIncreasementSpeed();
 
 		GameManager.Instance.IncreaseSpeedRatio(increaseScrollSpeed);
 		isDash = true;
@@ -144,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
 			yield return null;
 		}
 
-		GameManager.Instance.ChangeSpeedRatio(tempTime);
+		GameManager.Instance.ChangeSpeedRatio();
 
 		isDash = false;  
         playerScore.player_CurrentFish = 0;
