@@ -148,9 +148,18 @@ public class PlayerMovement : MonoBehaviour
 
         float fishFill = playerScore.fishBar.fillAmount;
         float maxDashTime = dashTime;
-		while (dashTime > 0f)
+
+        float timer = 0;
+        while (dashTime > 0f)
         {
+            timer += Time.deltaTime;
+            
             dashTime -= Time.deltaTime;
+            if(timer > 0.1f)
+            {
+                playerScore.fishScore += 1;
+                timer = 0;
+            }
 			playerScore.fishBar.fillAmount = Mathf.Lerp(0f, fishFill, dashTime / maxDashTime);
 			yield return null;
 		}

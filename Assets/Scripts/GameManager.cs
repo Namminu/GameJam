@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
+        Debug.Log("½ÃÀÛ");
     }
 
     private void Update()
@@ -81,13 +82,11 @@ public class GameManager : MonoBehaviour
 
         if (timer > 1f)
         {
-            speedIncreasement += Time.deltaTime * speedScale;
+            speedIncreasement += 0.007f * speedScale;
             Debug.Log(speedIncreasement);
-			speedNormal += Time.deltaTime * speedScale;
+			speedNormal += 0.007f * speedScale;
 			timer = 0f;
         }
-        
-        if(Input.GetKey(KeyCode.Escape)) GameOverMenu.Instance.GameOver();
     }
 
     public void Init()

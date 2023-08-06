@@ -7,6 +7,7 @@ public class PlayerScore : MonoBehaviour
 {
 	public int fishScore = 0;
 	public int timeScore = 0;
+	public int totalScore = 0;
 	public Text TextScore;
 
 	private float startTime;
@@ -31,8 +32,9 @@ public class PlayerScore : MonoBehaviour
 	{
 		int elapsedTime = Mathf.FloorToInt(Time.time - startTime); // ���?�ð�(��)�� ����մϴ�?
 		timeScore = elapsedTime; // ���?�ð�(��)�� ������ ��ȯ�մϴ�
+		totalScore = timeScore + fishScore;
 
-		TextScore.text = string.Format($"Score  :  {timeScore + fishScore}");
+        TextScore.text = string.Format($"Score  :  {totalScore}");
 
 		float fishPercent = player_CurrentFish / player_MaxFish;
 		fishBar.fillAmount = fishPercent;
