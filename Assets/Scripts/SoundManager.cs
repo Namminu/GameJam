@@ -80,6 +80,7 @@ public class SoundManager : MonoBehaviour
 
     public void DashEnd()
     {
+        if(cor == null) return;
         StopCoroutine(cor);
     }
 
