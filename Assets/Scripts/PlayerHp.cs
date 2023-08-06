@@ -45,7 +45,7 @@ public class PlayerHp : MonoBehaviour
         float hpPercent = player_CurrentHp / player_MaxHp;
         hpBar.fillAmount = hpPercent;
 
-        player_CurrentHp -= timeDecreaseHp / 100;
+        player_CurrentHp -= timeDecreaseHp / 100 * Time.deltaTime;
 
         if (!isGotHit)
         {
