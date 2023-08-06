@@ -138,7 +138,6 @@ public class PlayerMovement : MonoBehaviour
         SoundManager.Instance.Dash();
         dashEffect.SetActive(true);
         playerAnim.SetBool("dash", true);
-		dashTimePer = 10f;
 		float dashTime = playerScore.player_CurrentFish / dashTimePer;
         //float tempTime = GameManager.Instance.GetIncreasementSpeed();
 
@@ -157,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
             dashTime -= Time.deltaTime;
             if(timer > 0.1f)
             {
-                playerScore.fishScore += 1;
+                playerScore.fishScore += 2;
                 timer = 0;
             }
 			playerScore.fishBar.fillAmount = Mathf.Lerp(0f, fishFill, dashTime / maxDashTime);

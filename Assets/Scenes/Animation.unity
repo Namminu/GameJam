@@ -1945,7 +1945,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dashEffect: {fileID: 1054812119}
-  dashTimePer: 0
+  dashTimePer: 20
   increaseScrollSpeed: 0.5
 --- !u!212 &1556294917
 SpriteRenderer:
