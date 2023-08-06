@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
-        Debug.Log("시작");
     }
 
     private void Update()
@@ -79,11 +78,10 @@ public class GameManager : MonoBehaviour
         {
             speedIncreasement = speedNormal;
         }
-
+        Debug.Log(speedIncreasement);
         if (timer > 1f)
         {
             speedIncreasement += 0.007f * speedScale;
-            Debug.Log(speedIncreasement);
 			speedNormal += 0.007f * speedScale;
 			timer = 0f;
         }
@@ -91,8 +89,11 @@ public class GameManager : MonoBehaviour
 
     public void Init()
     {
-        speedIncreasement = 1f;
-        speedNormal = 1f;
+        Debug.Log("시작");
+        speedIncreasement = 0.7f;
+        speedNormal = 0.7f;
         timer = 0f;
-    }
+        isSlow = false;
+        isFast = false;
+}
 }
